@@ -2,8 +2,6 @@
 
 Personal **Claude Code plugin marketplace** by Emrullah. One repo, 5 plugins (27 skills total) + one MCP server, installable with a single command.
 
-**Public** repo — only the owner (`emrullahxyz`) has write/push access.
-
 ---
 
 ## Contents
