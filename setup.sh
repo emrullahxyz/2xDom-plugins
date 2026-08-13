@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 #
-# emrullah-plugins — kurulum + geri yükleme
+# 2xDom-plugins — kurulum + geri yükleme
 # Hedef: Claude Desktop uygulamasının CODE bölümü (Claude Code).
 #   Claude Code, kullanıcı-level skills'i ~/.claude/skills/ altından otomatik yükler;
 #   bu yüzden CLI/marketplace gerekmeden Desktop'ın Code bölümünde de anında çalışır.
 #
 # Yeni makinede TEK KOMUT:
-#   git clone https://github.com/emrullahxyz/emrullah-plugins
-#   cd emrullah-plugins && ./setup.sh
+#   git clone https://github.com/emrullahxyz/2xDom-plugins
+#   cd 2xDom-plugins && ./setup.sh
 #
 # Gateway değişip skill/plugin/mcp silinirse: aynı komutu tekrar çalıştır (idempotent).
 #
 set -uo pipefail
 
-REPO="https://github.com/emrullahxyz/emrullah-plugins"
-PLUGINS="2xDom emil-design-skills taste-skill impeccable"
+REPO="https://github.com/emrullahxyz/2xDom-plugins"
+PLUGINS="karpathy-guidelines ponytail emil-design-skills taste-skill impeccable"
 
 say() { printf '\n\033[1;36m%s\033[0m\n' "$*"; }
 has() { command -v "$1" >/dev/null 2>&1; }
@@ -26,7 +26,7 @@ if [ ! -d "$PWD/plugins" ]; then
     git clone --depth 1 "$REPO" "$TMP" >/dev/null 2>&1 && cd "$TMP" || { echo "klonlanamadı: $REPO"; exit 1; }
   elif has curl && has tar; then
     curl -fsSL "$REPO/archive/refs/heads/main.tar.gz" -o "$TMP/repo.tgz" && \
-      tar -xzf "$TMP/repo.tgz" -C "$TMP" && cd "$TMP/emrullah-plugins-main" || { echo "indirilemedi: $REPO"; exit 1; }
+      tar -xzf "$TMP/repo.tgz" -C "$TMP" && cd "$TMP/2xDom-plugins-main" || { echo "indirilemedi: $REPO"; exit 1; }
   else
     echo "! git veya curl+tar gerekli"; exit 1
   fi
@@ -59,7 +59,7 @@ if has claude && [ "${EMRULLAH_USE_MARKETPLACE:-0}" = "1" ]; then
   say "[3/3] (opsiyonel) marketplace kurulumu"
   claude plugin marketplace add "$REPO" 2>&1 || echo "  ! marketplace eklenemedi"
   for p in $PLUGINS; do
-    claude plugin install "$p@emrullah-plugins" 2>&1 || echo "  ! $p kurulamadı"
+    claude plugin install "$p@2xDom-plugins" 2>&1 || echo "  ! $p kurulamadı"
   done
 fi
 

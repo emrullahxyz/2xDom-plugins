@@ -1,25 +1,37 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "emrullah-plugins",
-  "description": "Emrullah'ın kişisel Claude Code plugin marketplace'i: 2xDom + emil-design-skills + taste-skill + impeccable",
+  "name": "2xDom-plugins",
+  "description": "Emrullah'ın kişisel Claude Code plugin marketplace'i: karpathy-guidelines + ponytail + emil-design-skills + taste-skill + impeccable",
   "owner": {
     "name": "Emrullah"
   },
   "metadata": {
-    "description": "Kişisel Claude Code plugin marketplace: 2xDom + emil-design-skills + taste-skill + impeccable",
-    "version": "1.0.0"
+    "description": "Kişisel Claude Code plugin marketplace: karpathy-guidelines + ponytail + emil-design-skills + taste-skill + impeccable",
+    "version": "1.1.0"
   },
   "plugins": [
     {
-      "name": "2xDom",
-      "source": "./plugins/2xDom",
+      "name": "karpathy-guidelines",
+      "source": "./plugins/karpathy-guidelines",
       "version": "1.0.0",
-      "description": "Kişisel skill paketi: karpathy-guidelines + ponytail ailesi (7 skill)",
+      "description": "Behavioral guidelines to reduce common LLM coding mistakes, derived from Andrej Karpathy's observations on LLM coding pitfalls",
       "author": {
         "name": "Emrullah"
       },
       "license": "MIT",
-      "keywords": ["karpathy", "ponytail", "yagni", "over-engineering", "best-practices"],
+      "keywords": ["guidelines", "best-practices", "coding", "karpathy"],
+      "category": "workflow"
+    },
+    {
+      "name": "ponytail",
+      "source": "./plugins/ponytail",
+      "version": "1.0.0",
+      "description": "Lazy senior dev mode: YAGNI, stdlib first, no unrequested abstractions. Ponytail ailesi (6 skill): ponytail, audit, review, debt, gain, help",
+      "author": {
+        "name": "Emrullah"
+      },
+      "license": "MIT",
+      "keywords": ["ponytail", "yagni", "lazy", "minimal", "over-engineering"],
       "category": "workflow"
     },
     {

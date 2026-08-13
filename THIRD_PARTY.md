@@ -5,6 +5,8 @@ Each project's original license is preserved. All content authored by the repo o
 
 | Component | Plugin | Source repo | License | Status |
 |---|---|---|---|---|
+| Karpathy behavioral guidelines (1) | `karpathy-guidelines` | [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) | MIT (declared in upstream `plugin.json`; no LICENSE file in upstream repo) | Vendored. |
+| Ponytail lazy-dev skills (6) | `ponytail` | [dietrichgebert/ponytail](https://github.com/dietrichgebert/ponytail) | MIT | Vendored. |
 | Design/animation skills (10) | `emil-design-skills` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | MIT | Vendored (copied). Original LICENSE file at plugin root. |
 | Impeccable skill (1, ~148 files) | `impeccable` | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Apache-2.0 | `reference/` + `scripts/` + `SKILL.md` copied as-is. Hooks/agents not included. |
 | Frontend design-taste skills (9) | `taste-skill` | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) | MIT | Vendored. |

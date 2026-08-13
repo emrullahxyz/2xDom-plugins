@@ -1,0 +1,18 @@
+{
+  "name": "ponytail",
+  "description": "Lazy senior dev mode. Forces the simplest, shortest solution that actually works: YAGNI, stdlib first, no unrequested abstractions. Includes the ponytail audit/review/debt/gain/help family.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Emrullah"
+  },
+  "license": "MIT",
+  "keywords": ["ponytail", "yagni", "lazy", "minimal", "over-engineering", "best-practices"],
+  "skills": [
+    "./skills/ponytail",
+    "./skills/ponytail-audit",
+    "./skills/ponytail-review",
+    "./skills/ponytail-debt",
+    "./skills/ponytail-gain",
+    "./skills/ponytail-help"
+  ]
+}

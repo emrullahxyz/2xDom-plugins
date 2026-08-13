@@ -1,22 +1,22 @@
-# emrullah-plugins — kurulum + geri yükleme (Windows / PowerShell)
+# 2xDom-plugins — kurulum + geri yükleme (Windows / PowerShell)
 # Hedef: Claude Desktop uygulamasının CODE bölümü (Claude Code).
 #   Claude Code, kullanıcı-level skills'i ~/.claude/skills/ altından otomatik yükler;
 #   CLI/marketplace gerekmeden Desktop'ın Code bölümünde de anında çalışır.
 #
 # Yeni makinede TEK KOMUT (PowerShell):
-#   irm https://raw.githubusercontent.com/emrullahxyz/emrullah-plugins/main/setup.ps1 | iex
-#   (veya: git clone https://github.com/emrullahxyz/emrullah-plugins ; cd emrullah-plugins ; .\setup.ps1)
+#   irm https://raw.githubusercontent.com/emrullahxyz/2xDom-plugins/main/setup.ps1 | iex
+#   (veya: git clone https://github.com/emrullahxyz/2xDom-plugins ; cd 2xDom-plugins ; .\setup.ps1)
 #
 # Gateway değişip skill/plugin/mcp silinirse: aynı komutu tekrar çalıştır (idempotent).
 #
 $ErrorActionPreference = "Continue"
-$Repo    = "https://github.com/emrullahxyz/emrullah-plugins"
-$Plugins = @("2xDom", "emil-design-skills", "taste-skill", "impeccable")
+$Repo    = "https://github.com/emrullahxyz/2xDom-plugins"
+$Plugins = @("karpathy-guidelines", "ponytail", "emil-design-skills", "taste-skill", "impeccable")
 
 # repo root'ta değilsek (örn. irm | iex) repoyu ZIP olarak indir — git GEREKMEZ
 if (-not (Test-Path (Join-Path $PWD "plugins"))) {
-  $t   = Join-Path $env:TEMP "emrullah-plugins-main"
-  $zip = Join-Path $env:TEMP "emrullah-plugins.zip"
+  $t   = Join-Path $env:TEMP "2xDom-plugins-main"
+  $zip = Join-Path $env:TEMP "2xDom-plugins.zip"
   if (Test-Path $t)   { Remove-Item $t -Recurse -Force }
   if (Test-Path $zip) { Remove-Item $zip -Force }
   Write-Host "  repo indiriliyor (zip)..."
@@ -63,7 +63,7 @@ foreach ($p in $Plugins) {
 if ((Get-Command claude -ErrorAction SilentlyContinue) -and $env:EMRULLAH_USE_MARKETPLACE -eq "1") {
   Write-Host "[3/3] (opsiyonel) marketplace kurulumu" -ForegroundColor Cyan
   claude plugin marketplace add $Repo
-  foreach ($p in $Plugins) { claude plugin install "$p@emrullah-plugins" }
+  foreach ($p in $Plugins) { claude plugin install "$p@2xDom-plugins" }
 }
 
 Write-Host "Tamam. Claude Desktop'i yeniden baslat ya da Code bolumunde /reload-plugins calistir." -ForegroundColor Green
