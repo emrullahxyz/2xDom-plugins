@@ -1,13 +1,13 @@
-# Third-party içerik ve lisanslar
+# Third-party content and licenses
 
-Bu repo üçüncü taraf projelerden alınan skill'leri ve bir MCP server referansını içerir.
-Her birinin orijinal lisansı korunur. Kullanıcının kendi yazdığı tüm içerik MIT lisansı altındadır (bkz. `LICENSE`).
+This repo contains skills imported from third-party projects and references one MCP server.
+Each project's original license is preserved. All content authored by the repo owner is MIT licensed (see `LICENSE`).
 
-| Komponent | Plugin | Kaynak repo | Lisans | Durum |
+| Component | Plugin | Source repo | License | Status |
 |---|---|---|---|---|
-| Design/animation skill'leri (10) | `emil-design-skills` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | MIT | Skill'ler vendored (kopyalandı). Orijinal LICENSE dosyası plugin kökünde. |
-| Impeccable skill (1, ~148 dosya) | `impeccable` | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Apache-2.0 | `reference/` + `scripts/` + `SKILL.md` olduğu gibi kopyalandı. Hooks/agents dahil edilmedi. |
-| Frontend design-taste skill'leri (9) | `taste-skill` | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) | MIT | Skill'ler vendored. |
-| codebase-memory-mcp (MCP server) | kurulum ek adımı | [DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp) | (kendi LICENSE'ı) | **Vendored değil** — native binary, `setup.sh` / `setup.ps1` resmi installer'ını çalıştırır. |
+| Design/animation skills (10) | `emil-design-skills` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | MIT | Vendored (copied). Original LICENSE file at plugin root. |
+| Impeccable skill (1, ~148 files) | `impeccable` | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Apache-2.0 | `reference/` + `scripts/` + `SKILL.md` copied as-is. Hooks/agents not included. |
+| Frontend design-taste skills (9) | `taste-skill` | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) | MIT | Vendored. |
+| codebase-memory-mcp (MCP server) | install step | [DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp) | (its own LICENSE) | **Not vendored** — native binary installed by `setup.sh` / `setup.ps1` via the official installer. |
 
-Not: MCP server kaynak kodu (2035+ dosyalık native build) bu repoya **kopyalanmaz**; yeni makineye kurucu üzerinden kurulur. Böylece repo küçük ve DSLifetime kalır.
+Note: The MCP server source (a 2000+ file native build) is intentionally **not** copied into this repo; it's installed on the target machine via its installer. This keeps this repo small and maintainable.

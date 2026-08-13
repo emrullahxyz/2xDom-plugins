@@ -1,32 +1,34 @@
 # emrullah-plugins 🧩
 
-Emrullah'ın kişisel **Claude Code plugin marketplace'i**. Tek repoda 4 plugin (toplam 27 skill) + bir MCP server kurulumu, tek komutla.
+Personal **Claude Code plugin marketplace** by Emrullah. One repo, 4 plugins (27 skills total) + one MCP server, installable with a single command.
 
-**Public** repo — sadece sahibi (`emrullahxyz`) push/yazma yetkisine sahiptir.
+**Public** repo — only the owner (`emrullahxyz`) has write/push access.
 
 ---
 
-## İçerik
+## Contents
 
-| Plugin | Skill / içerik | Kaynak |
+| Plugin | Skills / content | Source |
 |---|---|---|
-| **2xDom** | karpathy-guidelines + ponytail ailesi (7 skill) | kullanıcının kendi |
-| **emil-design-skills** | animate, apple-design, review-animations, pick-ui-library… (10 skill) | [emilkowalski/skills](https://github.com/emilkowalski/skills) |
-| **taste-skill** | taste-skill, minimalist, brutalist, soft, redesign, stitch, output, brandkit… (9 skill) | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) |
-| **impeccable** | 23 komutlu frontend UI design skill (`/impeccable polish`, `audit`, `critique`…) | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| **codebase-memory-mcp** (MCP server) | kod tabanı hafıza/grafik indexleme, semantic arama (15 tool) | [DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp) |
+| **2xDom** | karpathy-guidelines + ponytail family (7 skills) | user's own |
+| **emil-design-skills** | animate, apple-design, review-animations, pick-ui-library… (10 skills) | [emilkowalski/skills](https://github.com/emilkowalski/skills) |
+| **taste-skill** | taste-skill, minimalist, brutalist, soft, redesign, stitch, output, brandkit… (9 skills) | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) |
+| **impeccable** | 23-command frontend UI design skill (`/impeccable polish`, `audit`, `critique`…) | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| **codebase-memory-mcp** (MCP server) | codebase memory / graph indexing, semantic search (15 tools) | [DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp) |
 
-Detaylı lisans/atıflar: [THIRD_PARTY.md](THIRD_PARTY.md)
+Licenses & attributions: [THIRD_PARTY.md](THIRD_PARTY.md)
 
 ---
 
-## 🚀 Yeni makinede kurulum — TEK KOMUT
+## 🚀 Install on a new machine — ONE COMMAND
+
+Target: **Claude Desktop's Code section** (Claude Code). It shares `~/.claude/` config with the CLI, and reads user-level skills from `~/.claude/skills/`, so the setup works there without needing the `claude` CLI or a marketplace.
 
 ### Windows (PowerShell)
 ```powershell
 irm https://raw.githubusercontent.com/emrullahxyz/emrullah-plugins/main/setup.ps1 | iex
 ```
-veya:
+or:
 ```powershell
 git clone https://github.com/emrullahxyz/emrullah-plugins
 cd emrullah-plugins ; .\setup.ps1
@@ -38,53 +40,53 @@ git clone https://github.com/emrullahxyz/emrullah-plugins
 cd emrullah-plugins && ./setup.sh
 ```
 
-Script şunları yapar (idempotent — zaten kurulu olanı atlar):
-1. **codebase-memory-mcp** native binary'sini resmi installer ile kurar.
-2. Marketplaceden bu repo'yu ekler.
-3. 4 plugin'i kurar.
+What the script does (idempotent — skips what's already installed):
+1. Installs the **codebase-memory-mcp** native binary via its official installer (registers into `~/.claude.json`).
+2. Copies the 4 plugins into `~/.claude/skills/` — Claude Code auto-loads them next session (works in the Desktop Code section without CLI/marketplace).
+3. Optionally (only with `EMRULLAH_USE_MARKETPLACE=1`) also adds the marketplace and installs via `claude plugin install`.
 
-> Not: `setup.sh` / `setup.ps1` her CLI'DAKI tam komut adına bağlı olduğundan, `claude` CLI'si yoksa script size elle yapılacak `/plugin` adımlarını yazdırır.
-
----
-
-## 🔄 Gateway değişince her şey silinirse (geri yükleme)
-
-Claude Desktop'ta **gateway değiştirdiğinizde** skill/plugin/mcp ayarları sıfırlanabiliyor. Bunu geri yüklemek yeterli:
-
-- **Windows:** yukarıdaki `irm … | iex` komutunu tekrar çalıştır.
-- **macOS/Linux:** `./setup.sh`'Çalıştır.
-
-Script idempotent olduğu için tekrar çalıştırmak güvenli.
-
-### Manuel yol (CLI yoksa / UI tercih edenler için)
-1. `claude` veya `/plugin`: **Add marketplace** → `https://github.com/emrullahxyz/emrullah-plugins`
-2. 4 plugin'i de kur: `2xDom`, `emil-design-skills`, `taste-skill`, `impeccable`
-3. MCP: `codebase-memory-mcp` için resmi installer'ı çalıştır (bkz. [DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp))
-4. Doğrula: `/plugin` (4 plugin), `/mcp` (codebase-memory-mcp).
+> If the `claude` CLI isn't found, the script still works via the skills-directory copy (no CLI needed).
 
 ---
 
-## Repo yapısı
+## 🔄 If everything gets wiped after a gateway change
+
+Claude Desktop can reset skills/plugins/MCP config when you switch the **gateway**. To restore, just re-run the same install command:
+
+- **Windows:** run `irm … | iex` again.
+- **macOS/Linux:** run `./setup.sh` again.
+
+The script is idempotent, so re-running is safe.
+
+### Manual path (no CLI / if you prefer the UI)
+1. Copy each plugin folder from `plugins/<name>` into `~/.claude/skills/<name>/` (each contains `.claude-plugin/plugin.json` + `skills/`).
+2. For the MCP server, run the official installer: [DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp).
+3. Restart Claude (or run `/reload-plugins`).
+4. Verify: `/plugin` (4 plugins), `/mcp` (codebase-memory-mcp).
+
+---
+
+## Repo structure
 
 ```
 emrullah-plugins/
-├── .claude-plugin/marketplace.json   # 4 plugin'i tanımlayan marketplace
+├── .claude-plugin/marketplace.json   # marketplace declaring the 4 plugins
 ├── plugins/
 │   ├── 2xDom/          .claude-plugin + skills/ (7)
 │   ├── emil-design-skills/   skills/ (10)
 │   ├── taste-skill/          skills/ (9)
 │   └── impeccable/           skills/impeccable/ (SKILL.md + reference/ + scripts/)
-├── setup.sh             bash kurulum + geri yükleme
-├── setup.ps1            PowerShell kurulum + geri yükleme
-├── LICENSE              (MIT — kişisel içerik)
-└── THIRD_PARTY.md       üçüncü taraf atıflar/lisanslar
+├── setup.sh             bash install + restore
+├── setup.ps1            PowerShell install + restore
+├── LICENSE              (MIT — personal content)
+└── THIRD_PARTY.md       third-party attributions/licenses
 ```
 
 ---
 
-## Doğrulama
+## Verification
 
-- Kurulumdan sonra Claude Code'DA `/plugin`'te 4 plugin görünür.
-- `/mcp`'te `codebase-memory-mcp` 15 tool ile görünür.
-- Skill'ler: `/ponytail`, `/karpathy-guidelines`, `/impeccable`, bir taste skill, bir emil skill.
-  - Impeccable'ın `node …/scripts/*` komutları ilk kullanımda izin onayı isteyebilir — normaldir.
+- After install, `/plugin` shows the 4 plugins.
+- `/mcp` shows `codebase-memory-mcp` with 15 tools.
+- Skills: `/ponytail`, `/karpathy-guidelines`, `/impeccable`, one taste skill, one emil skill.
+  - Impeccable's `node …/scripts/*` commands may ask for permission on first use — that's expected.
