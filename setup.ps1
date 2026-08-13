@@ -30,14 +30,21 @@ Write-Host "[1/3] codebase-memory-mcp (MCP server)" -ForegroundColor Cyan
 if (Get-Command codebase-memory-mcp -ErrorAction SilentlyContinue) {
   Write-Host "  mevcut, atlandi"
 } else {
+  $installerExit = 1
   try {
     $u  = "https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.ps1"
     $tf = Join-Path $env:TEMP "cbm-install.ps1"
     Invoke-WebRequest -Uri $u -OutFile $tf -ErrorAction Stop
-    & $tf
-    Write-Host "  kuruldu (kayit: ~/.claude.json)"
+    & powershell -NoProfile -ExecutionPolicy Bypass -File $tf
+    $installerExit = $LASTEXITCODE
   } catch {
-    Write-Host "  ! kurulum hatasi: $($_.Exception.Message)" -ForegroundColor Yellow
+    Write-Host "  ! indirme hatasi: $($_.Exception.Message)" -ForegroundColor Yellow
+  }
+  if ($installerExit -eq 0) {
+    Write-Host "  kuruldu (kayit: ~/.claude.json)"
+  } else {
+    Write-Host "  ! kurucu basarisiz (exit $installerExit) - MCP atlaniyor, plugin'ler kurulmaya devam ediyor" -ForegroundColor Yellow
+    Write-Host "    Manuel kurulum: https://github.com/DeusData/codebase-memory-mcp"
   }
 }
 
