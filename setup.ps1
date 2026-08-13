@@ -13,11 +13,15 @@ $ErrorActionPreference = "Continue"
 $Repo    = "https://github.com/emrullahxyz/emrullah-plugins"
 $Plugins = @("2xDom", "emil-design-skills", "taste-skill", "impeccable")
 
-# repo root'ta değilsek önce kendini klonla
+# repo root'ta değilsek (örn. irm | iex) repoyu ZIP olarak indir — git GEREKMEZ
 if (-not (Test-Path (Join-Path $PWD "plugins"))) {
-  $t = Join-Path $env:TEMP "emrullah-plugins"
-  if (Test-Path $t) { Remove-Item $t -Recurse -Force }
-  git clone --depth 1 $Repo $t
+  $t   = Join-Path $env:TEMP "emrullah-plugins-main"
+  $zip = Join-Path $env:TEMP "emrullah-plugins.zip"
+  if (Test-Path $t)   { Remove-Item $t -Recurse -Force }
+  if (Test-Path $zip) { Remove-Item $zip -Force }
+  Write-Host "  repo indiriliyor (zip)..."
+  Invoke-WebRequest -Uri "$Repo/archive/refs/heads/main.zip" -OutFile $zip
+  Expand-Archive -Path $zip -DestinationPath $env:TEMP
   Set-Location $t
 }
 

@@ -19,10 +19,17 @@ PLUGINS="2xDom emil-design-skills taste-skill impeccable"
 say() { printf '\n\033[1;36m%s\033[0m\n' "$*"; }
 has() { command -v "$1" >/dev/null 2>&1; }
 
-# repo root'ta çalıştırılmadıysa (curl|bash vb.) önce kendini klonla
+# repo root'ta çalıştırılmadıysa (curl|bash vb.) önce kendini getir
 if [ ! -d "$PWD/plugins" ]; then
   TMP="$(mktemp -d)"
-  git clone --depth 1 "$REPO" "$TMP" >/dev/null 2>&1 && cd "$TMP" || { echo "klonlanamadı: $REPO"; exit 1; }
+  if has git; then
+    git clone --depth 1 "$REPO" "$TMP" >/dev/null 2>&1 && cd "$TMP" || { echo "klonlanamadı: $REPO"; exit 1; }
+  elif has curl && has tar; then
+    curl -fsSL "$REPO/archive/refs/heads/main.tar.gz" -o "$TMP/repo.tgz" && \
+      tar -xzf "$TMP/repo.tgz" -C "$TMP" && cd "$TMP/emrullah-plugins-main" || { echo "indirilemedi: $REPO"; exit 1; }
+  else
+    echo "! git veya curl+tar gerekli"; exit 1
+  fi
 fi
 
 # [1/3] codebase-memory MCP
