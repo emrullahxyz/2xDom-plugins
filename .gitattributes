@@ -1,0 +1,8 @@
+# Çapraz-platform normalizasyon
+* text=auto
+
+# Shell script'leri LF ile sakla — Windows'ta CRLF olursa bash bunu çalıştıramaz
+*.sh text eol=lf
+
+# PowerShell script'leri CRLF ile sakla (okunabilirlik)
+*.ps1 text eol=crlf

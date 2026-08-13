@@ -1,0 +1,25 @@
+{
+  "name": "2xDom",
+  "description": "Kişisel skill paketi: karpathy-guidelines + ponytail ailesi (7 skill)",
+  "version": "1.0.0",
+  "author": {
+    "name": "Emrullah"
+  },
+  "license": "MIT",
+  "keywords": [
+    "karpathy",
+    "ponytail",
+    "yagni",
+    "over-engineering",
+    "best-practices"
+  ],
+  "skills": [
+    "./skills/karpathy-guidelines",
+    "./skills/ponytail",
+    "./skills/ponytail-audit",
+    "./skills/ponytail-review",
+    "./skills/ponytail-debt",
+    "./skills/ponytail-gain",
+    "./skills/ponytail-help"
+  ]
+}

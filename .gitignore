@@ -1,0 +1,12 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+~$*
+
+# Node (impeccable script çıktıları gerekmiyorsa)
+node_modules/
+
+# yerel kurulum kalıntıları
+*.local

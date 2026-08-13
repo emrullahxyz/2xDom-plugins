@@ -1,0 +1,64 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "emrullah-plugins",
+  "description": "Emrullah'ın kişisel Claude Code plugin marketplace'i: 2xDom + emil-design-skills + taste-skill + impeccable",
+  "owner": {
+    "name": "Emrullah"
+  },
+  "metadata": {
+    "description": "Kişisel Claude Code plugin marketplace: 2xDom + emil-design-skills + taste-skill + impeccable",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "2xDom",
+      "source": "./plugins/2xDom",
+      "version": "1.0.0",
+      "description": "Kişisel skill paketi: karpathy-guidelines + ponytail ailesi (7 skill)",
+      "author": {
+        "name": "Emrullah"
+      },
+      "license": "MIT",
+      "keywords": ["karpathy", "ponytail", "yagni", "over-engineering", "best-practices"],
+      "category": "workflow"
+    },
+    {
+      "name": "emil-design-skills",
+      "source": "./plugins/emil-design-skills",
+      "version": "1.0.0",
+      "description": "Emil Kowalski'nin design/animation skill paketi (10 skill): animate, review-animations, apple-design, pick-ui-library ve daha fazlası",
+      "author": {
+        "name": "Emrullah"
+      },
+      "license": "MIT",
+      "keywords": ["design", "animation", "ui", "taste"],
+      "category": "workflow"
+    },
+    {
+      "name": "taste-skill",
+      "source": "./plugins/taste-skill",
+      "version": "1.0.0",
+      "description": "Frontend design taste skill seti (9): minimalist, brutalist, soft, redesign, stitch, output, brandkit ve daha fazlası",
+      "author": {
+        "name": "Emrullah"
+      },
+      "license": "MIT",
+      "keywords": ["design", "taste", "frontend", "ui", "aesthetic"],
+      "category": "workflow"
+    },
+    {
+      "name": "impeccable",
+      "source": "./plugins/impeccable",
+      "version": "1.0.0",
+      "description": "Impeccable design fluency skill (Paul Bakaus, Apache-2.0) — 23 komutlu frontend UI tasarım skill'i",
+      "author": {
+        "name": "Emrullah"
+      },
+      "homepage": "https://impeccable.style",
+      "repository": "https://github.com/pbakaus/impeccable",
+      "license": "Apache-2.0",
+      "keywords": ["design", "ui", "frontend", "ux"],
+      "category": "workflow"
+    }
+  ]
+}

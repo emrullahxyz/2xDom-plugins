@@ -1,0 +1,22 @@
+{
+  "name": "emil-design-skills",
+  "description": "Emil Kowalski'nin design/animation skill paketi (10 skill): animate, review-animations, apple-design, pick-ui-library ve daha fazlası",
+  "version": "1.0.0",
+  "author": {
+    "name": "Emrullah"
+  },
+  "license": "MIT",
+  "keywords": ["design", "animation", "ui", "taste"],
+  "skills": [
+    "./skills/animate",
+    "./skills/animation-vocabulary",
+    "./skills/apple-design",
+    "./skills/ask-sonner",
+    "./skills/emil-design-eng",
+    "./skills/find-animation-opportunities",
+    "./skills/improve-animations",
+    "./skills/pick-ui-library",
+    "./skills/prototype",
+    "./skills/review-animations"
+  ]
+}

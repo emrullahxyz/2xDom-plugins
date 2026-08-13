@@ -1,0 +1,13 @@
+{
+  "name": "impeccable",
+  "description": "Impeccable design fluency skill (Paul Bakaus, Apache-2.0) — 23 komutlu frontend UI tasarım skill'i",
+  "version": "1.0.0",
+  "author": {
+    "name": "Emrullah"
+  },
+  "homepage": "https://impeccable.style",
+  "repository": "https://github.com/pbakaus/impeccable",
+  "license": "Apache-2.0",
+  "keywords": ["design", "ui", "frontend", "ux"],
+  "skills": ["./skills/impeccable"]
+}

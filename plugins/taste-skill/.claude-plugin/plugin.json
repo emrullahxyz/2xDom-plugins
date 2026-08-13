@@ -1,0 +1,21 @@
+{
+  "name": "taste-skill",
+  "description": "Frontend design taste skill seti (9): taste-skill, minimalist, brutalist, soft, redesign, stitch, output, brandkit",
+  "version": "1.0.0",
+  "author": {
+    "name": "Emrullah"
+  },
+  "license": "MIT",
+  "keywords": ["design", "taste", "frontend", "ui", "aesthetic"],
+  "skills": [
+    "./skills/taste-skill",
+    "./skills/taste-skill-v1",
+    "./skills/minimalist-skill",
+    "./skills/brutalist-skill",
+    "./skills/soft-skill",
+    "./skills/redesign-skill",
+    "./skills/stitch-skill",
+    "./skills/output-skill",
+    "./skills/brandkit"
+  ]
+}
