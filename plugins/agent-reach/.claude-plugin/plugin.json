@@ -1,0 +1,15 @@
+{
+  "name": "agent-reach",
+  "description": "Internet capability router: installs and routes upstream tools for 15 platforms (Twitter/X, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu, LinkedIn, V2EX, Xueqiu, RSS, web search). The skill auto-installs the agent-reach CLI on first use.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Panniantong"
+  },
+  "homepage": "https://github.com/Panniantong/Agent-Reach",
+  "repository": "https://github.com/Panniantong/Agent-Reach",
+  "license": "MIT",
+  "keywords": ["internet", "search", "twitter", "reddit", "youtube", "github", "rss", "research"],
+  "skills": [
+    "./skills/agent-reach"
+  ]
+}

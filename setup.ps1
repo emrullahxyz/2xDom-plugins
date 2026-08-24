@@ -11,7 +11,7 @@
 #
 $ErrorActionPreference = "Continue"
 $Repo    = "https://github.com/emrullahxyz/2xDom-plugins"
-$Plugins = @("karpathy-guidelines", "ponytail", "emil-design-skills", "taste-skill", "impeccable")
+$Plugins = @("karpathy-guidelines", "ponytail", "emil-design-skills", "taste-skill", "impeccable", "superpowers", "agent-reach")
 
 # repo root'ta değilsek (örn. irm | iex) repoyu ZIP olarak indir — git GEREKMEZ
 if (-not (Test-Path (Join-Path $PWD "plugins"))) {
@@ -67,4 +67,4 @@ if ((Get-Command claude -ErrorAction SilentlyContinue) -and $env:EMRULLAH_USE_MA
 }
 
 Write-Host "Tamam. Claude Desktop'i yeniden baslat ya da Code bolumunde /reload-plugins calistir." -ForegroundColor Green
-Write-Host "Dogrulama: /plugin (4 plugin) ve /mcp (codebase-memory-mcp, 15 tool)."
+Write-Host "Dogrulama: /plugin (7 plugin) ve /mcp (codebase-memory-mcp, 15 tool)."

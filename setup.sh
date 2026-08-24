@@ -14,7 +14,7 @@
 set -uo pipefail
 
 REPO="https://github.com/emrullahxyz/2xDom-plugins"
-PLUGINS="karpathy-guidelines ponytail emil-design-skills taste-skill impeccable"
+PLUGINS="karpathy-guidelines ponytail emil-design-skills taste-skill impeccable superpowers agent-reach"
 
 say() { printf '\n\033[1;36m%s\033[0m\n' "$*"; }
 has() { command -v "$1" >/dev/null 2>&1; }
@@ -64,4 +64,4 @@ if has claude && [ "${EMRULLAH_USE_MARKETPLACE:-0}" = "1" ]; then
 fi
 
 say "Tamam. Claude Desktop'ı yeniden başlat ya da Code bölümünde /reload-plugins çalıştır."
-echo "Doğrulama: /plugin (4 plugin görünmeli) ve /mcp (codebase-memory-mcp, 15 tool)."
+echo "Doğrulama: /plugin (7 plugin görünmeli) ve /mcp (codebase-memory-mcp, 15 tool)."

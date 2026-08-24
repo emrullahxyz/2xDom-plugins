@@ -1,13 +1,13 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "2xDom-plugins",
-  "description": "Emrullah'ın kişisel Claude Code plugin marketplace'i: karpathy-guidelines + ponytail + emil-design-skills + taste-skill + impeccable",
+  "description": "Emrullah'ın kişisel Claude Code plugin marketplace'i: karpathy-guidelines + ponytail + emil-design-skills + taste-skill + impeccable + superpowers + agent-reach",
   "owner": {
     "name": "Emrullah"
   },
   "metadata": {
-    "description": "Kişisel Claude Code plugin marketplace: karpathy-guidelines + ponytail + emil-design-skills + taste-skill + impeccable",
-    "version": "1.1.0"
+    "description": "Kişisel Claude Code plugin marketplace: karpathy-guidelines + ponytail + emil-design-skills + taste-skill + impeccable + superpowers + agent-reach",
+    "version": "1.2.0"
   },
   "plugins": [
     {
@@ -70,6 +70,35 @@
       "repository": "https://github.com/pbakaus/impeccable",
       "license": "Apache-2.0",
       "keywords": ["design", "ui", "frontend", "ux"],
+      "category": "workflow"
+    },
+    {
+      "name": "superpowers",
+      "source": "./plugins/superpowers",
+      "version": "6.3.0",
+      "description": "Complete software development methodology (14 skills): brainstorming, TDD, systematic debugging, writing/executing plans, subagent-driven development, code review, git worktrees",
+      "author": {
+        "name": "Jesse Vincent",
+        "email": "jesse@fsck.com"
+      },
+      "homepage": "https://github.com/obra/superpowers",
+      "repository": "https://github.com/obra/superpowers",
+      "license": "MIT",
+      "keywords": ["skills", "tdd", "debugging", "collaboration", "best-practices", "workflows", "methodology"],
+      "category": "workflow"
+    },
+    {
+      "name": "agent-reach",
+      "source": "./plugins/agent-reach",
+      "version": "1.0.0",
+      "description": "Internet capability router: installs/routes upstream tools for 15 platforms (Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu, LinkedIn, V2EX, Xueqiu, RSS, web search). CLI auto-installs on first use.",
+      "author": {
+        "name": "Panniantong"
+      },
+      "homepage": "https://github.com/Panniantong/Agent-Reach",
+      "repository": "https://github.com/Panniantong/Agent-Reach",
+      "license": "MIT",
+      "keywords": ["internet", "search", "twitter", "reddit", "youtube", "github", "rss", "research"],
       "category": "workflow"
     }
   ]

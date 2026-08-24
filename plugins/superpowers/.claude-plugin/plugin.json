@@ -1,0 +1,29 @@
+{
+  "name": "superpowers",
+  "description": "Complete software development methodology: brainstorming, TDD, systematic debugging, planning, subagent-driven development, code review, git worktrees (14 skills)",
+  "version": "6.3.0",
+  "author": {
+    "name": "Jesse Vincent",
+    "email": "jesse@fsck.com"
+  },
+  "homepage": "https://github.com/obra/superpowers",
+  "repository": "https://github.com/obra/superpowers",
+  "license": "MIT",
+  "keywords": ["skills", "tdd", "debugging", "collaboration", "best-practices", "workflows", "methodology"],
+  "skills": [
+    "./skills/brainstorming",
+    "./skills/dispatching-parallel-agents",
+    "./skills/executing-plans",
+    "./skills/finishing-a-development-branch",
+    "./skills/receiving-code-review",
+    "./skills/requesting-code-review",
+    "./skills/subagent-driven-development",
+    "./skills/systematic-debugging",
+    "./skills/test-driven-development",
+    "./skills/using-git-worktrees",
+    "./skills/using-superpowers",
+    "./skills/verification-before-completion",
+    "./skills/writing-plans",
+    "./skills/writing-skills"
+  ]
+}
