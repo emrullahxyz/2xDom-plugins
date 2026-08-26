@@ -12,6 +12,21 @@ $SkillsDir   = if ($env:CLAUDE_SKILLS_DIR) { $env:CLAUDE_SKILLS_DIR } else { Joi
 $ClaudeJson  = Join-Path $HOME ".claude.json"
 $McpName     = "codebase-memory-mcp"
 
+# `claude` CLI PATH'te yoksa bilinen yerlere de bak (Claude Code default install)
+if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
+  $candidates = @(
+    (Join-Path $HOME ".local\bin\claude.cmd"),
+    (Join-Path $HOME ".local\bin\claude.exe"),
+    "C:\Program Files\nodejs\claude.cmd"
+  )
+  foreach ($c in $candidates) {
+    if (Test-Path $c) {
+      $env:Path = (Split-Path $c -Parent) + [IO.Path]::PathSeparator + $env:Path
+      break
+    }
+  }
+}
+
 # repo root'ta degilsek (orn. irm | iex) repoyu ZIP olarak indir
 if (-not (Test-Path (Join-Path $PWD "plugins"))) {
   $t   = Join-Path $env:TEMP "2xDom-plugins-main"
@@ -127,6 +142,35 @@ Write-Host ("  [{0}] {1,-22} {2}" -f $mcpTag, "mcp:$McpName", $mcpResult)
 
 Write-Host ""
 Write-Host ("Toplam: {0} OK, {1} sorun" -f $ok, $fail) -ForegroundColor $(if ($fail -eq 0) {"Green"} else {"Yellow"})
+
+# ---------- PHASE 4: MARKETPLACE (Claude plugin CLI) ----------
+# ~/.claude/skills/ Claude Code'un auto-load'unu tetikler, ama /plugin menusu
+# marketplace tarafini gosterir. Iki tarafin da esit olmasi icin burada
+# `claude plugin marketplace add` + `claude plugin install` calistiriyoruz.
+# Idempotent: zaten kurulular "already installed" der.
+if ($env:EMRULLAH_SKIP_MARKETPLACE -eq "1") {
+  Write-Host ""
+  Write-Host "(marketplace atladi: EMRULLAH_SKIP_MARKETPLACE=1)"
+} elseif (Get-Command claude -ErrorAction SilentlyContinue) {
+  Write-Host ""
+  Write-Host "[4/4] MARKETPLACE (claude plugin CLI)" -ForegroundColor Cyan
+  Write-Host ("  + marketplace ekleniyor: {0}" -f $Repo)
+  & claude plugin marketplace add $Repo *> $null
+  if ($LASTEXITCODE -eq 0) { Write-Host "  = marketplace OK" } else { Write-Host "  ! marketplace eklenemedi (devam ediliyor)" -ForegroundColor Yellow }
+  foreach ($p in $Plugins) {
+    $out = & claude plugin install "$p@2xDom-plugins" 2>&1
+    $line = ($out | Select-Object -Last 1)
+    if ($line -match "Successfully installed|already installed") {
+      Write-Host ("  = {0} - kurulu (zaten veya yeni)" -f $p)
+    } else {
+      Write-Host ("  ! {0} - basarisiz: {1}" -f $p, $line) -ForegroundColor Yellow
+    }
+  }
+} else {
+  Write-Host ""
+  Write-Host "(marketplace atladi: 'claude' CLI bulunamadi)"
+}
+
 Write-Host ""
 Write-Host "Claude Desktop'i yeniden baslat veya Code bolumunde /reload-plugins calistir." -ForegroundColor Green
 Write-Host "Dogrulama: /plugin (7 plugin) ve /mcp ($McpName)."

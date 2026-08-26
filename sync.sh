@@ -131,6 +131,34 @@ esac
 printf "  [%s] %-22s %s\n" "$tag" "mcp:$MCP_NAME" "$mcp_result"
 
 say "Toplam: $ok OK, $fail sorun"
+
+# ---------- PHASE 4: MARKETPLACE (Claude plugin CLI) ----------
+# ~/.claude/skills/ Claude Code'un auto-load'unu tetikler, ama /plugin menusu
+# marketplace tarafini gosterir. Iki tarafin da esit olmasi icin burada
+# `claude plugin marketplace add` + `claude plugin install` calistiriyoruz.
+# Idempotent: zaten kurulular "already installed" der.
+if [ "${EMRULLAH_SKIP_MARKETPLACE:-0}" = "1" ]; then
+  echo ""
+  echo "(marketplace atladi: EMRULLAH_SKIP_MARKETPLACE=1)"
+elif has claude; then
+  say "[4/4] MARKETPLACE (claude plugin CLI)"
+  echo "  + marketplace ekleniyor: $REPO"
+  claude plugin marketplace add "$REPO" >/dev/null 2>&1 \
+    && echo "  = marketplace OK" \
+    || echo "  ! marketplace eklenemedi (devam ediliyor)"
+  for p in $PLUGINS; do
+    out="$(claude plugin install "$p@2xDom-plugins" 2>&1)"
+    if echo "$out" | grep -q "Successfully installed\|already installed"; then
+      echo "  = $p - kurulu (zaten veya yeni)"
+    else
+      warn "  ! $p - basarisiz: $out\n"
+    fi
+  done
+else
+  echo ""
+  echo "(marketplace atladi: 'claude' CLI bulunamadi)"
+fi
+
 echo ""
 ok "Claude Desktop'i yeniden baslat veya Code bolumunde /reload-plugins calistir.\n"
 echo "Dogrulama: /plugin (7 plugin) ve /mcp ($MCP_NAME)."
